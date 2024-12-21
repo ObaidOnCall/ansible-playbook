@@ -1,0 +1,13 @@
+- name: Ensure Working directories are Exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+    group: sudo
+  with_items:
+    - "{{ home_dir }}"
+
+- name: Git checkout
+  ansible.builtin.git:
+    repo: "{{ git_repo }}"
+    dest: "{{ home_dir }}"

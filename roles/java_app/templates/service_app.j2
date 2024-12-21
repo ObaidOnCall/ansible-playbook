@@ -1,0 +1,19 @@
+[Unit]
+Description={{ APP_NAME }}
+After=network.target
+
+[Service]
+ExecStart=valhalla_service /root/valhalla_setup/valhalla/scripts/conf/valhalla.json 2
+ExecStop=/bin/kill $MAINPID
+Restart=on-failure
+User=root
+WorkingDirectory=/root/valhalla_setup/valhalla
+KillMode=control-group
+
+# Logging
+StandardOutput=file:/var/log/{{ APP_NAME }}/{{ APP_NAME }}.log
+StandardError=file:/var/log/{{ APP_NAME }}/{{ APP_NAME }}_error.log
+
+
+[Install]
+WantedBy=multi-user.target
