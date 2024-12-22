@@ -1,4 +1,12 @@
-- name: Deploy a Docker Compose Stack
+- name: Down The Stack First (docker compose down)
+  community.docker.docker_compose_v2:
+    project_src: "{{ working_dir }}"
+    files:
+      - docker-compose.yml
+    state: absent
+
+
+- name: Deploy a Docker Compose Stack (docker compose up)
   community.docker.docker_compose_v2:
     project_src: "{{ working_dir }}"
     files:
