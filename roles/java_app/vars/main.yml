@@ -5,9 +5,9 @@ git_repo: "{{ GIT_REPO }}"
 working_dir: "{{ home_dir }}"
 dpkg_dir: "{{ home_dir }}/{{ DPKG_DIR }}"
 
-java_home: "{{ JAVA_HOME }}"
-maven_home: "{{ MAVEN_HOME }}"
-path: "{{ ansible_env.PATH }}:{{ maven_home }}:{{ java_home }}"
+# java_home: "{{ JAVA_HOME }}"
+# maven_home: "{{ MAVEN_HOME }}"
+# path: "{{ ansible_env.PATH }}:{{ maven_home }}:{{ java_home }}"
 
 maven_version: "3.8.8"
 maven_url: "https://downloads.apache.org/maven/maven-3/{{ maven_version }}/binaries/apache-maven-{{ maven_version }}-bin.tar.gz"
