@@ -14,7 +14,7 @@
 
 
 - name: Running mvn package
-  shell: "mvn package"
+  shell: "/usr/share/maven/bin/mvn package"
   register: mvn_result
   args:
     chdir: "{{ dpkg_dir }}"
