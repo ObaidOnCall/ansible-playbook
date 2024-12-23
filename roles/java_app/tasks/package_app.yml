@@ -13,8 +13,12 @@
 
 
 
-
-- name: Clean and package Java application with Maven
-  ansible.builtin.command:
-    cmd: mvn package
+- name: Running mvn package
+  shell: "mvn package"
+  register: mvn_result
+  args:
     chdir: "{{ dpkg_dir }}"
+
+- name: "mvn clean task output"
+  debug:
+    var: mvn_result
