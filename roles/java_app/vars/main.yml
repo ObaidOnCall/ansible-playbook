@@ -2,7 +2,7 @@
 # vars file for java_app
 home_dir: "/home/.akatsuki/software"
 git_repo: "{{ GIT_REPO }}"
-working_dir: "{{ home_dir }}/{{ APP_NAME }}"
+working_dir: "{{ home_dir }}"
 dpkg_dir: "{{ home_dir }}/{{ APP_NAME }}/{{ DPKG_DIR }}"
 
 maven_version: "3.8.8"
