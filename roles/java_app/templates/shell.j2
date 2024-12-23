@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Navigate to the project directory
+cd {{ dpkg_dir }} || exit 1
+
+# Clean the Maven project
+mvn clean || exit 1
+
+# Package the Maven project
+mvn package || exit 1
