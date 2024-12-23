@@ -12,12 +12,7 @@
     var: env_output.stdout
 
 
-- name: Clean and package Java application with Maven
-  ansible.builtin.command:
-    cmd: mvn package
-    chdir: "{{ dpkg_dir }}"
-
-    environ:
-      JAVA_HOME: "/usr/lib/jvm/java-17-openjdk-amd64"
-      MAVEN_HOME: "/usr/share/maven"
-      PATH: "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$JAVA_HOME/bin:$MAVEN_HOME/bin"
+# - name: Clean and package Java application with Maven
+#   ansible.builtin.command:
+#     cmd: mvn package
+#     chdir: "{{ dpkg_dir }}"
