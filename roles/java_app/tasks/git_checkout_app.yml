@@ -10,7 +10,7 @@
 
 - name: Print the working Dir
   ansible.builtin.debug:
-    msg: {{ working_dir }}
+    msg: dir 🔖 {{ working_dir }}
 
 
 - name: Git checkout
