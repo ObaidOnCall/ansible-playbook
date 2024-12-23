@@ -16,7 +16,11 @@
   ansible.builtin.template:
     src : shell.j2
     dest: "{{ dpkg_dir }}/maven-package.sh"
-  mode: '0755'
+
+- name: Set permissions on maven-package.sh
+  ansible.builtin.file:
+    path: "{{ dpkg_dir }}/maven-package.sh"
+    mode: '0755'
 
 - name: Run Maven clean and package script
   ansible.builtin.shell:
