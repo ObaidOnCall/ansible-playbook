@@ -14,7 +14,7 @@
 
 
 
-# - name: Clean and package Java application with Maven
-#   ansible.builtin.command:
-#     cmd: mvn package
-#     chdir: "{{ dpkg_dir }}"
+- name: Clean and package Java application with Maven
+  ansible.builtin.command:
+    cmd: mvn package
+    chdir: "{{ dpkg_dir }}"
