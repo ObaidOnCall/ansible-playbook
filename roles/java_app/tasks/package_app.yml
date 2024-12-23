@@ -3,7 +3,16 @@
     msg: dpkg_dir 🔖 {{ dpkg_dir }}
 
 
-- name: Clean and package Java application with Maven
-  ansible.builtin.command:
-    cmd: mvn package
-    chdir: "{{ dpkg_dir }}"
+- name: Debug environment variables
+  ansible.builtin.shell: env
+  register: env_output
+
+- name: Print environment variables
+  ansible.builtin.debug:
+    var: env_output.stdout
+
+
+# - name: Clean and package Java application with Maven
+#   ansible.builtin.command:
+#     cmd: mvn package
+#     chdir: "{{ dpkg_dir }}"
