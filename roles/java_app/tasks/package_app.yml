@@ -1,3 +1,8 @@
+- name: Print the working Dir
+  ansible.builtin.debug:
+    msg: dpkg_dir 🔖 {{ dpkg_dir }}
+
+
 - name: Clean and package Java application with Maven
   ansible.builtin.command:
     cmd: mvn package
