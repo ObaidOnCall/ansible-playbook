@@ -1,3 +1,12 @@
+- name: Print the working Dir
+  ansible.builtin.debug:
+    msg: source file 🫸 {{ src_jar_file }}/{{ app_name }}.jar
+
+- name: Print the working Dir
+  ansible.builtin.debug:
+    msg: dest file 🫸 {{ working_dir }}/{{ app_name }}.jar
+
+
 - name: Copy the Uber JAR file
   copy:
     src: "{{ src_jar_file }}/{{ app_name }}.jar"
