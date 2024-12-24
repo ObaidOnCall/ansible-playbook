@@ -1,0 +1,6 @@
+- name: Copy the Uber JAR file
+  copy:
+    src: "{{ src_jar_file }}/{{ app_name }}.jar"
+    dest: "{{ working_dir }}/{{ app_name }}.jar"
+    group: sudo
+    mode: '0755'

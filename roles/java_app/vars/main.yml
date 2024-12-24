@@ -1,6 +1,9 @@
 ---
 # vars file for java_app
-home_dir: "/home/akatsuki/softwares/{{ APP_NAME }}"
+app_name: "{{ APP_NAME }}"
+home_dir: "/home/akatsuki/softwares/{{ app_name }}"
+src_jar_file: "{{ SRC_JAR_FILE }}"
+
 git_repo: "{{ GIT_REPO }}"
 working_dir: "{{ home_dir }}"
 dpkg_dir: "{{ home_dir }}/{{ DPKG_DIR }}"
