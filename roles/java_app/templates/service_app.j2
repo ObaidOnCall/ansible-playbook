@@ -3,7 +3,7 @@ Description={{ APP_NAME }}
 After=network.target
 
 [Service]
-ExecStart=valhalla_service /root/valhalla_setup/valhalla/scripts/conf/valhalla.json 2
+ExecStart=/usr/bin/java -jar {{ working_dir }}/{{ app_name }}.jar
 ExecStop=/bin/kill $MAINPID
 Restart=on-failure
 User=root
