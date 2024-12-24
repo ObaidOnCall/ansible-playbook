@@ -13,3 +13,18 @@
     dest: "{{ working_dir }}/{{ app_name }}.jar"
     group: sudo
     mode: '0755'
+
+
+- name : Generate maven-package.sh file using jinja2
+  ansible.builtin.template:
+    src : service_app.j2
+    dest: "/etc/systemd/system/{{ app_name }}.service"
+  register: template_output
+  notify:
+    - Reload systemd daemon
+    - Enable and start the service
+
+
+- name: Debug output of creating .service file
+  ansible.builtin.debug:
+    msg: template_output
