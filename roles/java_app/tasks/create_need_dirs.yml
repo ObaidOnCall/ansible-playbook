@@ -6,3 +6,4 @@
     group: sudo
   with_items:
     - "{{ working_dir }}"
+    - "/var/log/{{ APP_NAME }}"
