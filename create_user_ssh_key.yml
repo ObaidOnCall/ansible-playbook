@@ -1,0 +1,16 @@
+- hosts: ungrouped
+  become: yes
+  tasks:
+    - name: create the 'akatsuki' user
+      user: name=akatsuki append=yes state=present createhome=yes shell=/bin/bash
+
+    - name: allow 'akatsuki' to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'akatsuki ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: set up authorized keys for the akatsuki user
+      authorized_key: user=akatsuki key="{{item}}"
+      with_file:
+        - {{ PUB_DIR }}

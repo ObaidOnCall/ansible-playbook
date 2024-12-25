@@ -1,4 +1,5 @@
 - name : Install Java App (Must Be Mvn) And Run It Behind A Nginx Proxy
   hosts: ungrouped
+  become: yes
   roles:
     - java_app
