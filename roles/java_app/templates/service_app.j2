@@ -7,7 +7,7 @@ ExecStart=/usr/bin/java -jar {{ working_dir }}/{{ app_name }}.jar
 ExecStop=/bin/kill $MAINPID
 Restart=on-failure
 User=root
-WorkingDirectory=/root/valhalla_setup/valhalla
+WorkingDirectory={{ working_dir }}
 KillMode=control-group
 
 # Logging
