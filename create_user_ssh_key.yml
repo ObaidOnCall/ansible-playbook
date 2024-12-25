@@ -13,4 +13,4 @@
     - name: set up authorized keys for the akatsuki user
       authorized_key: user=akatsuki key="{{item}}"
       with_file:
-        - {{ PUB_DIR }}
+        - "{{ PUB_DIR }}"
