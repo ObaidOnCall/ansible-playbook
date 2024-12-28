@@ -3,6 +3,7 @@
     path: "{{ item }}"
     state: directory
     mode: '0755'
+    owner: "{{ ansible_user }}"
     group: sudo
   with_items:
     - "{{ home_dir }}"
