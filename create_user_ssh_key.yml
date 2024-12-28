@@ -1,4 +1,4 @@
-- hosts: ungrouped
+- hosts: webservers
   become: yes
   tasks:
     - name: create the 'akatsuki' user
