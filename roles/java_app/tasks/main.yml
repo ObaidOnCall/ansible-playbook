@@ -5,6 +5,6 @@
   block:
     - ansible.builtin.include_tasks: install_dependencies.yml
     - ansible.builtin.include_tasks: create_working_dirs.yml
+    - ansible.builtin.include_tasks: download_jar_file.yml
     - ansible.builtin.include_tasks: deploy.yml
-    # - ansible.builtin.include_tasks: package_app.yml
     # - ansible.builtin.include_tasks: package_app.yml
