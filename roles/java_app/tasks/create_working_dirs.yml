@@ -1,0 +1,9 @@
+- name: Ensure That The Needed Dir Exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+    group: sudo
+  with_items:
+    - "{{ working_dir }}"
+    - "/var/log/{{ APP_NAME }}"

@@ -1,0 +1,15 @@
+- name: Download JAR file from MinIO
+  aws_s3:
+    mode: get
+    bucket: "{{ bucket_name }}"
+    object: "{{ object_key }}"
+    dest: "{{ dest_path }}"
+    aws_access_key: "{{ minio_access_key }}"
+    aws_secret_key: "{{ minio_secret_key }}"
+    endpoint_url: "{{ minio_endpoint }}"
+  register: download_result
+
+
+- name: Ensure the JAR file was downloaded
+  debug:
+    msg: "JAR file downloaded to {{ dest_path }}. Result: {{ download_result }}"
