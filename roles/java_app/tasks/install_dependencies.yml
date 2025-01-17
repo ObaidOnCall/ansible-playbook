@@ -14,7 +14,7 @@
   ansible.builtin.yum:
     name:
       - python3
-      - python3-pip
+      - pip
       - java-17-openjdk-devel
       - maven
     state: present
@@ -28,4 +28,3 @@
       - boto3
       - botocore
     state: present
-    executable: python3
