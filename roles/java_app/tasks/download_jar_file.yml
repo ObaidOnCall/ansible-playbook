@@ -1,13 +1,7 @@
-- name: Check if the JAR file already exists
-  stat:
-    path: "{{ dest_path }}"
-  register: file_check
-
-- name: Remove the existing JAR file if it exists
+- name: Remove the existing JAR file
   file:
     path: "{{ dest_path }}"
     state: absent
-  when: file_check.stat.exists
 
 - name: Download JAR file from MinIO
   aws_s3:
