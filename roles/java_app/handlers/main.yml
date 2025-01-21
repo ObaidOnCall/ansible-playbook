@@ -4,8 +4,8 @@
 - name: Reload systemd daemon
   ansible.builtin.command: systemctl daemon-reload
 
-- name: Enable and start the service
-  ansible.builtin.service:
-    name: "{{ app_name }}"
-    state: started
-    enabled: yes
+# - name: Enable and start the service
+#   ansible.builtin.service:
+#     name: "{{ app_name }}"
+#     state: started
+#     enabled: yes

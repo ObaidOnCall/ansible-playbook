@@ -5,9 +5,14 @@
   register: template_output
   notify:
     - Reload systemd daemon
-    - Enable and start the service
 
 
 - name: Debug output of creating .service file
   ansible.builtin.debug:
     msg: template_output
+
+- name: Restart the service
+  ansible.builtin.service:
+    name: "{{ app_name }}"
+    state: restarted
+    enabled: yes
