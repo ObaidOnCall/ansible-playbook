@@ -1,4 +1,4 @@
 - name: Create Proxy
-  hosts: webservers
+  hosts: web_servers
   roles:
     - init_nginx_proxy
