@@ -7,6 +7,7 @@
   with_items:
     - /etc/nginx/proxies
     - /etc/nginx/proxies_test
+    - /etc/nginx/conf.d/include
 
 
 - name: Ensure Nginx Needed Files Are Present
