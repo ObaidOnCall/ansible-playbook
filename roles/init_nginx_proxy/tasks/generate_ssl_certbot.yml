@@ -1,12 +1,25 @@
-- name: Generate SSL certificate
-  ansible.builtin.command:
-    cmd: >
-      certbot --nginx
-      --non-interactive
-      --agree-tos
-      --email "{{ acme_account_email }}"
-      --domains "{{ service_host_name }}"
+# - name: Generate SSL certificate
+#   ansible.builtin.command:
+#     cmd: >
+#       certbot --nginx
+#       --non-interactive
+#       --agree-tos
+#       --email "{{ acme_account_email }}"
+#       --domains "{{ service_host_name }}"
+#   register: certbot_output
+
+
+
+- name: 'Get certificate'
+  command: '/usr/local/bin/certbot -n --nginx certonly -d {{ service_host_name }}'
+  args:
+    creates: '/etc/letsencrypt/live/{{ service_host_name }}'
+  ignore_errors: true
   register: certbot_output
+
+  tags:
+    - nginx
+    - certbot
 
 - name: Debug Certbot output
   ansible.builtin.debug:
