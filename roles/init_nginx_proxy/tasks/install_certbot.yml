@@ -2,19 +2,20 @@
   ansible.builtin.apt:
     name:
       - certbot
-      - python3-certbot-apache
-      - python3-certbot-nginx
+      - certbot-nginx
     state: present
     update_cache: yes
   when: ansible_os_family == "Debian"
+  tags:
+    - nginx
+    - certbot
 
 
 - name: Install Certbot packages on Red Hat/CentOS
   ansible.builtin.yum:
     name:
       - certbot
-      - python3-certbot-apache
-      - python3-certbot-nginx
+      - certbot-nginx
     state: present
   when: ansible_os_family == "RedHat"
 
@@ -28,3 +29,17 @@
 - name: Debug Certbot version
   ansible.builtin.debug:
     var: certbot_version.stdout
+
+
+
+# register the certbot
+
+- name: Register certbot
+  shell: |
+    certbot -n register --agree-tos --email "{{ acme_account_email }}"
+    touch /etc/letsencrypt/.registered
+  args:
+    creates: /etc/letsencrypt/.registered
+  tags:
+    - nginx
+    - certbot
