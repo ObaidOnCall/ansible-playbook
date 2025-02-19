@@ -11,7 +11,7 @@
 
 
 - name: 'Get certificate'
-  command: '/usr/local/bin/certbot -n --nginx certonly -d {{ service_host_name }}'
+  command: 'certbot -n --nginx certonly -d {{ service_host_name }}'
   args:
     creates: '/etc/letsencrypt/live/{{ service_host_name }}'
   ignore_errors: true
