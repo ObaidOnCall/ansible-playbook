@@ -2,59 +2,39 @@
 # {{ service_host_name }}
 # ------------------------------------------------------------
 
-
-
 map $scheme $hsts_header {
     https   "max-age=63072000; preload";
 }
 
-
 upstream SERVICE_{{ service_host_name }} {
-  server {{ service_address }}:{{ service_port }} ;
-  keepalive 100 ;
+  server {{ service_address }}:{{ service_port }};
+  keepalive 100;
 }
 
 server {
-
   set $forward_scheme $scheme;
 
   listen 80;
   listen [::]:80;
 
+  {% if ssl_certificate and ssl_certificate_key %}
   listen 443 ssl http2;
   listen [::]:443 ssl http2;
-
+  {% endif %}
 
   server_name {{ service_host_name }};
-
 
   # HSTS (ngx_http_headers_module is required) (63072000 seconds = 2 years)
   add_header Strict-Transport-Security $hsts_header always;
 
-
-
-
-
   # Force SSL
   include conf.d/include/force-ssl.conf;
-
-
-
-
 
   access_log /var/log/nginx/{{ service_host_name }}.log;
   error_log /var/log/nginx/{{ service_host_name }}.log warn;
 
-
-
-
-
-
-
   location / {
-
-    proxy_pass http://SERVICE_{{ service_host_name }} ;
-
+    proxy_pass http://SERVICE_{{ service_host_name }};
 
     # HSTS (ngx_http_headers_module is required) (63072000 seconds = 2 years)
     add_header Strict-Transport-Security $hsts_header always;
@@ -64,9 +44,7 @@ server {
     proxy_set_header X-Forwarded-Proto $forward_scheme;
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Forwarded-Port $server_port;
-
   }
-
 
   # Custom
   include /data/nginx/custom/server_proxy[.]conf;
