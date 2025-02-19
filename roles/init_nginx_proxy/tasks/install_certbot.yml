@@ -30,17 +30,3 @@
 - name: Debug Certbot version
   ansible.builtin.debug:
     var: certbot_version.stdout
-
-
-
-# register the certbot
-
-- name: Register certbot
-  shell: |
-    certbot -n register --agree-tos --email "{{ acme_account_email }}"
-    touch /etc/letsencrypt/.registered
-  args:
-    creates: /etc/letsencrypt/.registered
-  tags:
-    - nginx
-    - certbot
